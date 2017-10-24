@@ -17,6 +17,17 @@ namespace scenario
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {
+            if (iteration == 0)
+            {
+                m_valuefactory->reset(iteration);
+                srand(523948);
+                int currenttime = 0;
+                for(int num = 0; num < m_keys; num++, currenttime += 1)
+                {
+                    container->set(currenttime,m_valuefactory->getNextValue());
+                }
+                m_timespan = currenttime+1;
+            }
         }
 
         virtual void finishIteration(Container<ValueT> *container, int iteration)
@@ -38,12 +49,12 @@ namespace scenario
         WriteRandomAccess(
                 Container<ValueT> *refcontainer,
                 ValueFactory<ValueT> *valuefactory,
-                int timespan = 1000000,
+                int keys = 100000,
                 int writesperiteration = 1000,
               QObject *parent = nullptr)
             : Templated(refcontainer, parent),
               m_valuefactory(valuefactory),
-              m_timespan(timespan),
+              m_keys(keys),
               m_writesperiteration(writesperiteration)
         {
 
@@ -56,7 +67,7 @@ namespace scenario
 
     private:
         ValueFactory<ValueT> *m_valuefactory;
-        int m_timespan;
+        int m_keys, m_timespan;
         int m_writesperiteration;
     };
 

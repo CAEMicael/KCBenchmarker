@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "scenario.h"
+#include "container.h"
+#include "referencecontainer.h"
 #include <QThread>
 
 namespace Ui {
@@ -18,6 +20,10 @@ public:
     ~MainWindow();
 
 
+    template<class T>
+    std::vector<Container<T>*> createEvalContainers() const;
+
+
     std::vector<Scenario*> createScenarios() const;
 
 public slots:
@@ -27,5 +33,15 @@ private:
     Ui::MainWindow *ui;
     QThread *m_workthread;
 };
+
+
+template<class T>
+std::vector<Container<T>*> MainWindow::createEvalContainers() const
+{
+    std::vector<Container<T>*> ret;
+    ret.push_back(new ReferenceContainer<double>());
+    return ret;
+}
+
 
 #endif // MAINWINDOW_H

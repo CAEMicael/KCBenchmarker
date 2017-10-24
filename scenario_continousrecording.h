@@ -10,10 +10,10 @@
 namespace scenario
 {
     template<class ValueT>
-    class SimulatedRecording : public scenario::Templated<ValueT>
+    class ContinousRecording : public scenario::Templated<ValueT>
     {
     public:
-        QString name() const {return "Simulated recording";}
+        QString name() const {return "Continous recording";}
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {
@@ -44,7 +44,7 @@ namespace scenario
         }
 
 
-        SimulatedRecording(
+        ContinousRecording(
                 Container<ValueT> *refcontainer,
                 ValueFactory<ValueT> *valuefactory,
               int subiterationsperiteration = 1000,
@@ -58,7 +58,7 @@ namespace scenario
 
         }
 
-        ~SimulatedRecording()
+        ~ContinousRecording()
         {
             delete m_valuefactory;
         }

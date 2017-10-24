@@ -40,8 +40,9 @@ HEADERS += \
     scenarioresult.h \
     graph.h \
     scenario_readrandomaccess.h \
-    scenario_simulatedrecording.h \
-    scenario_writerandomaccess.h
+    scenario_writerandomaccess.h \
+    scenario_continousrecording.h \
+    scenario_iterativerecording.h
 
 FORMS += \
         mainwindow.ui \

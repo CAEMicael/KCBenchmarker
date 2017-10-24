@@ -22,10 +22,12 @@ namespace scenario
             {
                 m_valuefactory->reset(iteration);
                 srand(523948);
-                for(int num = 0; num < m_keys; num++)
+                int currenttime = 0;
+                for(int num = 0; num < m_keys; num++, currenttime += 1)
                 {
-                    container->set(rand()%m_timespan,m_valuefactory->getNextValue());
+                    container->set(currenttime,m_valuefactory->getNextValue());
                 }
+                m_timespan = currenttime+1;
             }
         }
 
@@ -53,13 +55,11 @@ namespace scenario
                 Container<ValueT> *refcontainer,
                 ValueFactory<ValueT> *valuefactory,
               int keys = 100000,
-              int timespan = 1000000,
               int readsperiteration = 1000,
               QObject *parent = nullptr)
             : Templated(refcontainer, parent),
               m_valuefactory(valuefactory),
               m_keys(keys),
-              m_timespan(timespan),
               m_readsperiteration(readsperiteration)
         {
 

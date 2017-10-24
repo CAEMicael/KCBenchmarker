@@ -2,6 +2,7 @@
 #include "ui_graph.h"
 #include <QPaintEvent>
 #include <QPainter>
+#include <QTextStream>
 
 
 void Graph::addLine(int id, QString name, QColor color)
@@ -40,7 +41,7 @@ void Graph::paintEvent(QPaintEvent *e)
 
     for(QMap<int,std::vector<std::pair<int,int>>>::iterator mapiter = m_lines.begin(); mapiter != m_lines.end(); mapiter++)
     {
-        int xmin,xmax,ymin,ymax;
+        int xmin = 0,xmax = 0,ymin = 0,ymax = 0;
         bool first = true;
         for(std::vector<std::pair<int,int>>::iterator pointiter = mapiter->begin(); pointiter != mapiter->end(); pointiter++)
         {
@@ -66,7 +67,7 @@ void Graph::paintEvent(QPaintEvent *e)
     }
 
 
-    if (true && localxmax.size() > 0)
+    if (true && localxmax.size() > 0) //x scale should not individually scale, therefore always true.
     {
         int xmin = localxmin[0];
         int xmax = localxmax[0];
@@ -102,6 +103,18 @@ void Graph::paintEvent(QPaintEvent *e)
         }
     }
 
+
+    if (m_globalscale && localxmax.size() > 0)
+    {
+        QString msg;
+        QTextStream str(&msg);
+        str << localymax[0];
+        p.drawText(arearect.topLeft(),msg);
+
+        msg.clear();
+        str << localymin[0];
+        p.drawText(arearect.adjusted(0,0,0,0).bottomLeft(),msg);
+    }
 
 
     int containerindex = 0;

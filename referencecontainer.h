@@ -20,11 +20,11 @@ public:
 
     int index(TimeT time) const
     {
-        for(int num = 0; num < keys(); num++)
+        for(int num = keys()-1; num >= 0; num--)
         {
-            if (m_data[num].first >= time) return num;
+            if (m_data[num].first <= time) return num;
         }
-        return keys()-1;
+        return -1;
     }
 
     void truncate(TimeT afterAndAt)
@@ -41,20 +41,20 @@ public:
 
     void set(TimeT timestamp, const ValueT &value)
     {
-        for(std::vector<std::pair<TimeT,ValueT> >::iterator iter = m_data.begin(); iter != m_data.end(); iter++)
+        for(int i = (int)m_data.size()-1; i >= 0; i--)
         {
-            if (timestamp == iter->first)
+            if (timestamp == m_data[i].first)
             {
-                iter->second = value;
+                m_data[i].second = value;
                 return;
             }
-            if (timestamp < iter->first)
+            if (timestamp > m_data[i].first)
             {
-                m_data.insert(iter,std::pair<TimeT,ValueT>(timestamp,value));
+                m_data.insert(m_data.begin() + i + 1,std::pair<TimeT,ValueT>(timestamp,value));
                 return;
             }
         }
-        m_data.push_back(std::pair<TimeT,ValueT>(timestamp,value));
+        m_data.insert(m_data.begin(),std::pair<TimeT,ValueT>(timestamp,value));
     }
 
 

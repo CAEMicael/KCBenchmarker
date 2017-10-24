@@ -59,7 +59,7 @@
           <string>Evaluate</string>
          </property>
          <property name="checked">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -97,7 +97,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
