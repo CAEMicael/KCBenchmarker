@@ -18,10 +18,14 @@ namespace scenario
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {
-            m_valuefactory->reset(iteration);
-            for(int i = 0; i < m_newkeysperiteration; i++)
+            if (iteration == 0)
             {
-                container->set(container->keys(),m_valuefactory->getNextValue());
+                m_valuefactory->reset(iteration);
+                srand(523948);
+                for(int num = 0; num < m_keys; num++)
+                {
+                    container->set(rand()%m_timespan,m_valuefactory->getNextValue());
+                }
             }
         }
 
@@ -31,12 +35,11 @@ namespace scenario
 
         virtual void runIteration(Container<ValueT> *container, int iteration)
         {
-            int keys = container->keys();
             srand(iteration * 12378);
 
             for(int i = 0; i < m_readsperiteration; i++)
             {
-                int index = container->index(rand()%keys);
+                int index = container->index(rand()%m_timespan);
                 if (index >= 0)
                 {
                     ValueT v = container->operator [](index).second;
@@ -49,12 +52,14 @@ namespace scenario
         ReadRandomAccess(
                 Container<ValueT> *refcontainer,
                 ValueFactory<ValueT> *valuefactory,
-              int newkeysperiteration = 1000,
-              int readsperiteration = 100,
+              int keys = 100000,
+              int timespan = 1000000,
+              int readsperiteration = 1000,
               QObject *parent = nullptr)
             : Templated(refcontainer, parent),
               m_valuefactory(valuefactory),
-              m_newkeysperiteration(newkeysperiteration),
+              m_keys(keys),
+              m_timespan(timespan),
               m_readsperiteration(readsperiteration)
         {
 
@@ -67,7 +72,7 @@ namespace scenario
 
     private:
         ValueFactory<ValueT> *m_valuefactory;
-        int m_newkeysperiteration;
+        int m_keys, m_timespan;
         int m_readsperiteration;
     };
 

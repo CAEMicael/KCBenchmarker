@@ -27,9 +27,9 @@ namespace scenario
         {
             m_valuefactory->reset(iteration);
             srand(iteration);
-            for(int i = 0; i < m_newkeysperiteration; i++)
+            for(int i = 0; i < m_writesperiteration; i++)
             {
-                container->set(rand(),m_valuefactory->getNextValue());
+                container->set(rand()%m_timespan,m_valuefactory->getNextValue());
             }
 
         }
@@ -38,11 +38,13 @@ namespace scenario
         WriteRandomAccess(
                 Container<ValueT> *refcontainer,
                 ValueFactory<ValueT> *valuefactory,
-              int newkeysperiteration = 1000,
+                int timespan = 1000000,
+                int writesperiteration = 1000,
               QObject *parent = nullptr)
             : Templated(refcontainer, parent),
               m_valuefactory(valuefactory),
-              m_newkeysperiteration(newkeysperiteration)
+              m_timespan(timespan),
+              m_writesperiteration(writesperiteration)
         {
 
         }
@@ -54,7 +56,8 @@ namespace scenario
 
     private:
         ValueFactory<ValueT> *m_valuefactory;
-        int m_newkeysperiteration;
+        int m_timespan;
+        int m_writesperiteration;
     };
 
 }

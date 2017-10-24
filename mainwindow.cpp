@@ -54,7 +54,8 @@ std::vector<Scenario*> MainWindow::createScenarios() const
     scenario::ReadRandomAccess<double> *s2 = new scenario::ReadRandomAccess<double>(
                 new ReferenceContainer<double>(),
                 new valuefactory::ConstantValue<double>(0.0),
-                100,
+                100000,
+                1000000,
                 1000,
                 nullptr
                 );
@@ -64,6 +65,7 @@ std::vector<Scenario*> MainWindow::createScenarios() const
     scenario::WriteRandomAccess<double> *s3 = new scenario::WriteRandomAccess<double>(
                 new ReferenceContainer<double>(),
                 new valuefactory::ConstantValue<double>(0.0),
+                1000000,
                 1000,
                 nullptr
                 );
