@@ -79,8 +79,8 @@ std::vector<Scenario*> MainWindow::createScenarios() const
     scenario_double = new scenario::ReadRandomAccess<double>(
                 new ReferenceContainer<double>(),
                 new valuefactory::ConstantValue<double>(0.0),
-                10000,
-                1000,
+                100000,
+                500,
                 nullptr
                 );
     containers_double = createEvalContainers<double>();
@@ -93,8 +93,8 @@ std::vector<Scenario*> MainWindow::createScenarios() const
     scenario_double = new scenario::WriteRandomAccess<double>(
                 new ReferenceContainer<double>(),
                 new valuefactory::ConstantValue<double>(0.0),
-                10000,
-                1000,
+                100000,
+                500,
                 nullptr
                 );
     containers_double = createEvalContainers<double>();
