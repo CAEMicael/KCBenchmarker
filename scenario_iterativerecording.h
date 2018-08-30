@@ -15,6 +15,7 @@ namespace scenario
     {
     public:
         QString name() const {return "Iterative recording";}
+        QString description() const { return "Performs a continous recording, then truncates the recording at some random point. Loops.";}
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {

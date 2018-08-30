@@ -15,6 +15,7 @@ namespace scenario
     {
     public:
         QString name() const {return "Read random access";}
+        QString description() const {return "Reads values at random locations on a pre-set recording sequence.";}
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {

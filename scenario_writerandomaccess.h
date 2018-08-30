@@ -14,6 +14,7 @@ namespace scenario
     {
     public:
         QString name() const {return "Write random access";}
+        QString description() const { return "Writes keys all over the place in a completely random manner.";}
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {

@@ -9,6 +9,7 @@ class Scenario : public QObject
     Q_OBJECT
 public:
     virtual QString name() const = 0;
+    virtual QString description() const = 0;
 
     explicit Scenario(QObject *parent = nullptr);
 signals:

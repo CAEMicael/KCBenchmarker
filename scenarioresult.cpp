@@ -80,6 +80,8 @@ ScenarioResult::ScenarioResult(Scenario *scenario, QWidget *parent) :
 
 
     ui->name->setText(scenario->name());
+    ui->messages->addItem(scenario->description());
+    ui->messages->scrollToBottom();
 }
 
 

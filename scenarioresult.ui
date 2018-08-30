@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>434</width>
-    <height>429</height>
+    <height>476</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -122,8 +122,8 @@
    <slot>setGlobalScale(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>274</x>
-     <y>225</y>
+     <x>380</x>
+     <y>293</y>
     </hint>
     <hint type="destinationlabel">
      <x>145</x>

@@ -14,6 +14,7 @@ namespace scenario
     {
     public:
         QString name() const {return "Continous recording";}
+        QString description() const {return "Writes a set of continously increasing keys onto the container. Every now and then, some values are read near the current write location.";}
 
         virtual void prepareIteration(Container<ValueT> *container, int iteration)
         {
