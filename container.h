@@ -1,7 +1,7 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <utility>
-#include <qstring>
+#include <QString>
 
 typedef long long TimeT;
 

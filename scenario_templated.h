@@ -3,7 +3,8 @@
 
 #include "scenario.h"
 #include "container.h"
-#include <qtextstream>
+#include <QTextStream>
+#include <QElapsedTimer>
 
 namespace scenario
 {

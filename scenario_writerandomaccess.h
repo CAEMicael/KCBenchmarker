@@ -53,7 +53,7 @@ namespace scenario
                 int keys = 100000,
                 int writesperiteration = 1000,
               QObject *parent = nullptr)
-            : Templated(refcontainer, parent),
+            : Templated<ValueT>(refcontainer, parent),
               m_valuefactory(valuefactory),
               m_keys(keys),
               m_writesperiteration(writesperiteration)

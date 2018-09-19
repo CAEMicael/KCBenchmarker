@@ -51,7 +51,7 @@ namespace scenario
               int subiterationsperiteration = 1000,
               int readspersubiteration = 30,
               QObject *parent = nullptr)
-            : Templated(refcontainer, parent),
+            : Templated<ValueT>(refcontainer, parent),
               m_valuefactory(valuefactory),
               m_subiterationsperiteration(subiterationsperiteration),
               m_readspersubiteration(readspersubiteration)
